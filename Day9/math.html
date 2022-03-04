@@ -5,43 +5,67 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script>
+            
+        function calc()
+        {
+            var n1 = parseFloat(document.getElementById('n1').value);
+            var n2 = parseFloat(document.getElementById('n2').value);
+            
+            var oper = document.getElementById('operators').value;
+            
+            if(oper === '+')
+            {
+                document.getElementById('result').value = n1+n2;
+            }
+            
+            if(oper === '-')
+            {
+                document.getElementById('result').value = n1-n2;
+            }
+            
+            if(oper === '/')
+            {
+                document.getElementById('result').value = n1/n2;
+            }
+            
+            if(oper === 'X')
+            {
+                document.getElementById('result').value = n1*n2;
+            }
+        }
+        
+    </script>
+    <style>
+        #operators{
+            width: 140px;
+        }
+        h1{
+            color:blue;
+            margin-left: 120px;
+
+        }
+        body{
+            background-color: aqua;
+        }
+    </style>
+    
 </head>
 <body>
-    1st number: 
-    <input type="number" id="number" value=""><br><br>
-    2nd number:
-    <input type="number" value="" id="numbers"><br><br>
-    <input type="submit" value="Addition" onclick="return validate1()">
-    <input type="submit" value="Subtration" onclick="return validate2()">
-    <input type="submit" value="Multiplication" onclick="return validate3()">
-    <input type="submit" value="devide" onclick="return validate4()"><br><br>
-    <b>Result is </b><br><br>
-    <span id="result"></span>
-<script>
-    function validate1()
-    {
-        var a = document.getElementById('number').value;
-        var b = document.getElementById('numbers').value;
-        document.getElementById('result').innerHTML=(a+b);
-    }
-    function validate2()
-    {
-        var a = document.getElementById('number').value;
-        var b = document.getElementById('numbers').value;
-        document.getElementById('result').innerHTML=(a-b);
-    }
-    function validate3()
-    {
-        var a = document.getElementById('number').value;
-        var b = document.getElementById('numbers').value;
-        document.getElementById('result').innerHTML=(a*b);
-    }
-    function validate4()
-    {
-        var a = document.getElementById('number').value;
-        var b = document.getElementById('numbers').value;
-        document.getElementById('result').innerHTML=(a/b);
-    }
-</script>
+    <h1>Calculator</h1>
+    <table>
+    <tr><td><b>Enter 1st Input Number:</b></td><td><input type="text" id="n1"/></td></tr>
+    <tr><td> <b>Enter 2nd Input Number:</b></td><td><input type="text" id="n2"/></td></tr>
+    
+    <tr><td><select id="operators">
+        <option value="+">Addition(+)</option>
+        <option value="-">Subtration(-)</option>
+        <option value="/">Division (&#247)</option>
+        <option value="X">Multiplication (x)</option>
+    </select>
+    
+    <button onclick="calc();">=</button></td>
+    <td><input type="text" id="result"/></td></tr>
+</table>
 </body>
 </html>
