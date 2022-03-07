@@ -1,78 +1,94 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200&display=swap');
-
-        body{
-            background-color: gray;
-
+    <title>Canvas Activity</title>
+    <style type="text/css">
+        div {
+            display: inline-block; border: 2px solid black; width: 404px; height: 404px;
         }
-        p, h1{
-            font-family: 'Open Sans';
-            transition: 0.4s;
-            transition-timing-function: ease-in-out;
-        }
-
-        h1{
-            font-size: 35px;
-        }
-        p{
-            font-size: 20px;
-        }
-
-        .container{
-            width: 90%;
-            max-width: 800px;
-            margin: 0 auto;
-
-        }
-        button{
-            margin-top: 8vh;
-            width: 80px;
-            height: 60px;
-            background-color: yellow;
-            color: black;
-            font-family:cursive;
-            margin-right: 50px;
-            border: none;
-            font-size: 15px;
-            user-select: none;
-            cursor: pointer;
-        }
-
-        </style>
-
+        h2 {text-align: center;}
+        canvas {border: solid 2px black; margin: 2%;}
+    </style>
 </head>
 <body>
-    <div class="container">
-        <button onclick="changeFontSize('increase')">Increase Font</button>
-        <button onclick="changeFontSize('decrease')">Decrease Font</button>
-        <h1 id="hone">Change Font Size </h1>
-        <p id="pone">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsam velit odio sint exercitationem similique itaque, porro natus corrupti laboriosam vel veritatis unde fugit quae nulla nobis nostrum magnam nemo perspiciatis quas fugiat voluptas doloremque totam accusantium consectetur! Illo, quae aut.</p>
-    </div>
-</body>
-<script>
-    function changeFontSize(type){
-        console.log(type);
-        var ids =["#hone", "#pone"];
-        ids.forEach(id =>{
-            var el = document.querySelector(id);
 
-            var fontSize = window.getComputedStyle(el, null).getPropertyValue("font-size");
 
-            fontSize = parseFloat(fontSize);
 
-            if(type === "increase"){
-                el.style.fontSize =(fontSize + 5) + "px";
-            }else{
-                el.style.fontSize =(fontSize - 5) + "px";
-            }
-        })
+<canvas id="chessBoard" width="300" height="300" ></canvas><canvas id="myCanvas" style="border:1px solid #b42c2c;"></canvas>
+
+    <script type="text/javascript">
+var squareSizw;
+const numOfRows = 5;
+const NUMBER_OF_COLS = 5;
+var NUMBER_OF_SQUARES;
+
+var xValue = 0;
+var yValue = 0;
+
+var canvas, ctx
+
+window.onload
+    canvas = document.getElementById("chessBoard");
+    ctx = canvas.getContext("2d");
+    squareSizw = canvas.height / numOfRows;
+    NUMBER_OF_SQUARES = numOfRows * NUMBER_OF_COLS;
+
+    console.log("Size of each square = " + squareSizw +"px");
+
+    drawBoard(canvas, numOfRows, NUMBER_OF_COLS);
+
+
+function drawBoard(can, nRow, nCol) {
+    var ctx = can.getContext("2d");
+    var w = can.width;
+    var h = can.height;
+
+    nRow = nRow || 12;    // default number of rows
+    nCol = nCol || 12;    // default number of columns
+
+    w /= nCol;            // width of a block
+    h /= nRow;            // height of a block
+
+    for (var i = 0; i < nRow; ++i) {
+        for (var j = 0, col = nCol / 2; j < col; ++j) {
+            ctx.rect(2 * j * w + (i % 2 ? 0 : w), i * h, w, h);
+        }
     }
-</script>
+
+    ctx.fill();
+}
+// Rainbow
+var colors = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'];
+
+var arcWidth = 12; 
+var radius = 15* arcWidth;
+
+var omkadering = document.getElementById("myCanvas");
+var context = omkadering.getContext("2d");
+omkadering.width = (radius + (colors.length-0.5) * arcWidth) * 2;
+omkadering.height = (radius + (colors.length-1) * arcWidth);
+
+var drawArc = function( color ){
+  context.beginPath();
+  context.arc(
+    omkadering.width/2,
+    omkadering.height + arcWidth/2,
+    radius,
+    Math.PI,
+    2*Math.PI
+  );
+  context.lineWidth = arcWidth;
+  context.strokeStyle = color;
+  context.stroke();
+  context.closePath();
+  radius += arcWidth;
+};
+
+colors.reverse().forEach( drawArc );
+    </script>
+
+</body>
 </html>
