@@ -1,0 +1,25 @@
+<div class="container-fluid" style="background-color: aqua;">
+  <div>
+    <h2 class="alert alert-primary text-center" style="background-color: gray;color: black;">Welcome to Router</h2>
+  </div>
+  <div class="container">
+    <ul class="nav">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="store" style="background-color: blanchedalmond;">Registration</a>
+      </li>
+      <li class="nav-item" >
+        <a class="nav-link" routerLink="delete" style="background-color: rgb(201, 235, 33);">Delete User</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="usersList" style="background-color: blanchedalmond;">User List</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="update" style="background-color: rgb(158, 230, 25);">Update User List</a>
+      </li>
+    </ul>
+    
+  </div>
+  <div class="container">
+    <router-outlet></router-outlet>
+  </div>
+</div>
