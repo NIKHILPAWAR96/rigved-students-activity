@@ -1,0 +1,21 @@
+<div>
+    <h1>User List</h1>
+    <table *ngIf ="item" class="table table-scriped">
+        <thead>
+            <tr>
+              <th>Use Id</th><th>Name</th><th>Dob</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor ="let user of items">
+                <td>{{user.user Id}}</td>
+                <td>{{uer.name}}</td>
+                <td>{{user.dob}}</td>
+            </tr>
+        </tbody>
+
+
+
+
+    </table>
+</div>
